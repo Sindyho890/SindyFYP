@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Action Page</title>
+		<link rel="stylesheet" href="./index.css" />
+		<script src="./action.js" defer></script>
+		<style>
+			/* General styling */
+			body {
+				font-family: "Times New Roman", Times, serif;
+				margin: 0;
+				padding: 0;
+				background-color: #f4f4f9;
+				color: #333;
+			}
+
+			main {
+				max-width: 900px;
+				margin: 40px auto;
+				padding: 20px;
+			}
+
+			.page-title {
+				font-size: 45px;
+				font-weight: bold;
+				text-align: center;
+				color: #4a90e2;
+				margin-bottom: 10px;
+			}
+
+			.page-description {
+				font-size: 25px;
+				text-align: center;
+				color: #282727;
+				margin-bottom: 30px;
+			}
+
+			/* Subcategory Section */
+			#subcategory-section {
+				background-color: #ffffff;
+				padding: 20px;
+				border-radius: 10px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				margin-bottom: 30px;
+				position: relative; /* To position the copy button */
+			}
+
+			#subcategory-section h2 {
+				font-size: 26px;
+				color: #4a90e2;
+				margin-bottom: 10px;
+			}
+
+			/* Adjusted Copy Button Styling */
+			.copy-button {
+				background: none;
+				border: none;
+				cursor: pointer;
+				font-size: 35px; /* Increased size */
+				color: #4a90e2;
+				vertical-align: middle;
+				margin-left: 30px; /* Add spacing between text and icon */
+			}
+
+			.copy-button:hover {
+				color: #4a90e2;
+			}
+
+			.copy-button:focus {
+				outline: none;
+			}
+
+			#selected-subcategory {
+				display: inline-block; /* Ensure text and button are inline */
+				font-size: 20px;
+				color: #333;
+			}
+
+			 /* Adjusted Copy Button Styling for Subcategory */
+			#subcategory-section .copy-button {
+				background: url('./copy.png') no-repeat center center;
+				background-size: contain;
+				width: 40px;
+				height: 20px;
+				border: none;
+				cursor: pointer;
+				margin-left: 10px; /* Add spacing between text and button */
+				vertical-align: middle; /* Align with the text */
+			}
+
+			#subcategory-section .copy-button:hover {
+				opacity: 0.8;
+			}
+
+			/* Email Information Section */
+			#email-info-section {
+				background-color: #ffffff;
+				padding: 25px;
+				border-radius: 10px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				position: relative; /* To position the copy button */
+			}
+
+			#email-info-section h2 {
+				font-size: 24px;
+				color: #4a90e2;
+				margin-bottom: 15px;
+			}
+
+			#email-info-section label {
+				display: block;
+				margin-top: 15px;
+				font-weight: bold;
+				color: #333;
+			}
+
+			#email-info-section input,
+			#email-info-section select {
+				width: 100%;
+				padding: 12px;
+				margin-top: 5px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				font-size: 14px;
+			}
+
+			#email-info-section button {
+				display: block;
+				margin: 20px auto 0;
+				background-color: #4a90e2;
+				color: white;
+				border: none;
+				padding: 12px 20px;
+				border-radius: 5px;
+				font-size: 16px;
+				cursor: pointer;
+				font-weight: bold;
+			}
+
+			#email-info-section button:hover {
+				background-color: #357ab8;
+			}
+
+			 /* Notification Styling */
+			#copy-notification {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				background-color: #c4eac6;
+				color: rgb(0, 0, 0);
+				padding: 10px 20px;
+				border-radius: 5px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				font-size: 14px;
+				font-weight: bold;
+				z-index: 1000;
+				opacity: 0;
+				transition: opacity 0.3s ease-in-out;
+			}
+
+			#copy-notification.hidden {
+				opacity: 0;
+				pointer-events: none;
+			}
+
+			#copy-notification:not(.hidden) {
+				opacity: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Toolbar -->
+		<nav id="toolbar">
+			<ul>
+				<li><a href="./index.html">Home</a></li>
+				<li>
+					<a href="./situation.html">Situation</a>
+				</li>
+				<li><a href="./write-it-yourself.html">Write it Yourself</a></li>
+				<li><a href="./record.html">Record</a></li>
+			</ul>
+		</nav>
+		</nav>
+		<main>
+			<h1 class="page-title">Action Page</h1>
+			<p class="page-description">Customize your email based on the selected subcategory and example.</p>
+
+			<!-- Subcategory Display Section -->
+			<section id="subcategory-section">
+				<h2>Subcategory</h2>
+				<p id="selected-subcategory" style="display: inline;">No subcategory selected.</p>
+				<!-- Updated Copy Button -->
+				<button class="copy-button" onclick="copySubcategory()" title="Copy Subcategory"></button>
+			</section>
+
+			<!-- Email Information Section -->
+			<section id="email-info-section">
+				<h2>Email Information</h2>
+				<label for="email-subject">Subject:</label>
+				<input type="text" id="email-subject" placeholder="Enter subject here..." />
+				<label for="email-recipient">To:</label>
+				<input type="text" id="email-recipient" placeholder="Enter recipient here..." />
+				<label for="email-sender">From:</label>
+				<input type="text" id="email-sender" placeholder="Enter sender's name here..." />
+				<h3>Selected Example:</h3>
+				<p id="selected-example">No example selected.</p>
+				<!-- Save Button -->
+				<button id="save-entry-button" onclick="saveData()">Save</button>
+			</section>
+		</main>
+
+		<!-- Notification for Copy Success -->
+		<div id="copy-notification" class="hidden">Successfully Copied</div>
+
+		<script>
+			// Function to copy the Subcategory text
+			function copySubcategory() {
+				const subcategoryText = document.getElementById("selected-subcategory").textContent;
+				navigator.clipboard.writeText(subcategoryText).then(() => {
+					showCopyNotification();
+				}).catch((err) => {
+					console.error("Failed to copy text: ", err);
+				});
+			}
+
+			// Function to copy the Email Information content
+			function copyEmailInfo() {
+				const subject = document.getElementById("email-subject").value || "No Subject";
+				const recipient = document.getElementById("email-recipient").value || "No Recipient";
+				const sender = document.getElementById("email-sender").value || "No Sender";
+
+				// Replace typing boxes and selection boxes in the Selected Example with their values
+				const exampleElement = document.getElementById("selected-example");
+				let exampleContent = exampleElement.cloneNode(true); // Clone the element to avoid modifying the DOM
+
+				// Replace input fields with their values
+				exampleContent.querySelectorAll("input").forEach((input) => {
+					input.replaceWith(input.value || "");
+				});
+
+				// Replace select fields with their selected values
+				exampleContent.querySelectorAll("select").forEach((select) => {
+					const selectedValue = select.options[select.selectedIndex]?.text || "No Selection";
+					select.replaceWith(selectedValue);
+				});
+
+				// Remove any remaining HTML tags (e.g., <br>)
+				const plainTextExample = exampleContent.innerHTML
+					.replace(/<br\s*\/?>/g, "\n") // Replace <br> tags with newlines
+					.replace(/<\/?[^>]+(>|$)/g, ""); // Remove remaining HTML tags
+
+				// Combine all fields into a single string, including the dropdown selection
+				const emailInfo = `Subject: ${subject}\nTo: ${recipient}\nFrom: ${sender}\n${plainTextExample.trim()}`;
+
+				// Copy to clipboard
+				navigator.clipboard.writeText(emailInfo).then(() => {
+					showCopyNotification();
+				}).catch((err) => {
+					console.error("Failed to copy text: ", err);
+				});
+			}
+
+			// Function to show the copy notification
+			function showCopyNotification() {
+				const notification = document.getElementById("copy-notification");
+				notification.classList.remove("hidden");
+				setTimeout(() => {
+					notification.classList.add("hidden");
+				}, 2000); // Hide after 2 seconds
+			}
+		</script>
+	</body>
+</html>

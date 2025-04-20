@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Write it Yourself</title>
+		<link rel="stylesheet" href="./index.css" />
+		<script src="./write-it-yourself.js" defer></script>
+		<style>
+			/* General styling */
+			body {
+				font-family: "Times New Roman", Times, serif;
+				margin: 0;
+				padding: 0;
+				background-color: #f4f4f9;
+				color: #333;
+			}
+
+			main {
+				max-width: 900px;
+				margin: 40px auto;
+				padding: 20px;
+			}
+
+			.page-title {
+				font-size: 40px;
+				font-weight: bold;
+				text-align: center;
+				color: #4a90e2;
+				margin-bottom: 10px;
+			}
+
+			.page-description {
+				font-size: 25px;
+				text-align: center;
+				color: #666;
+				margin-bottom: 30px;
+			}
+
+			 /* Enhanced Dropdown Section */
+			#dropdown-section {
+				background-color: #ffffff;
+				padding: 25px;
+				border-radius: 12px;
+				box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+				margin-bottom: 30px;
+				text-align: center;
+							}
+
+			#dropdown-container {
+				display: flex;
+				justify-content: center;
+				gap: 10px;
+				margin-bottom: 20px;
+			}
+
+			#dropdown-container select {
+				padding: 12px;
+				font-size: 18px;
+				margin: 10px;
+				border: 1px solid #ccc;
+				border-radius: 8px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+				transition: box-shadow 0.3s, transform 0.2s;
+			}
+
+			#dropdown-container select:focus {
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+				transform: scale(1.02);
+			}
+
+			#dropdown-section button {
+				padding: 12px 25px;
+				font-size: 18px;
+				background-color: #4a90e2;
+				color: white;
+				border: none;
+				border-radius: 8px;
+				cursor: pointer;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+				transition: background-color 0.3s, transform 0.2s;
+			}
+
+			#dropdown-section button:hover {
+				background-color: #357ab8;
+				transform: scale(1.05);
+			}
+
+			#loading-spinner {
+				width: 30px;
+				height: 30px;
+				border: 4px solid #ccc;
+				border-top: 4px solid #4a90e2;
+				border-radius: 50%;
+				animation: spin 1s linear infinite;
+				margin: 10px auto;
+			}
+
+			#loading-spinner.hidden {
+				display: none;
+			}
+
+			@keyframes spin {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+
+			 /* Enhanced Example Section */
+			#example-section {
+				background-color: #ffffff;
+				padding: 25px;
+				border-radius: 12px;
+				box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+				margin-bottom: 30px;
+				display: none; /* Initially hidden */
+			}
+
+			#example-section h3 {
+				font-size: 20px;
+				color: #4a90e2;
+				margin-bottom: 10px;
+				font-weight: bold;
+			}
+
+			#example-list {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 20px;
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			/* Example Item Styling */
+			.example-item {
+				position: relative; /* Enable positioning for child elements */
+				background-color: #f9f9f9;
+				padding: 20px;
+				border: 1px solid #ddd;
+				border-radius: 8px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				transition: box-shadow 0.3s, transform 0.2s;
+			}
+
+			.example-item:hover {
+				box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+				transform: scale(1.03);
+			}
+
+			.example-item h4 {
+				margin: 0 0 10px;
+				color: #4a90e2;
+				font-size: 20px;
+			}
+
+			.example-item p {
+				margin: 0 0 20px;
+				font-size: 16px;
+				color: #333;
+				line-height: 1.6;
+			}
+
+			.example-content-container {
+				position: relative;
+				padding: 15px;
+				background-color: #ffffff;
+				border-radius: 5px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			 /* Copy Button Styling */
+			.copy-button {
+				position: absolute; /* Position the button inside the example item */
+				top: 10px; /* Align to the top */
+				right: 10px; /* Align to the right */
+				background-color: #f4f4f4;
+				border: 1px solid #ccc;
+				border-radius: 50%; /* Make it circular */
+				padding: 10px;
+				cursor: pointer;
+				transition: background-color 0.3s, transform 0.2s;
+			}
+
+			.copy-button:hover {
+				background-color: #e0e0e0;
+				transform: scale(1.1); /* Slight zoom effect */
+			}
+
+			.copy-button img {
+				width: 20px;
+				height: 20px;
+			}
+
+			/* Button Container Styling */
+			.button-container {
+				display: flex;
+				gap: 10px; /* Add spacing between buttons */
+				align-items: center;
+				margin-top: 10px;
+			}
+
+			.go-button {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 10px;
+				background-color: #4a90e2;
+				color: white;
+				border: none;
+				border-radius: 8px;
+				cursor: pointer;
+				transition: background-color 0.3s, transform 0.2s;
+			}
+
+			.go-button:hover {
+				background-color: #357ab8;
+				transform: scale(1.05);
+			}
+
+			.go-button img {
+				width: 20px;
+				height: 20px;
+			}
+
+			.copy-button {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 10px;
+				background-color: #f4f4f4;
+				border: 1px solid #ccc;
+				border-radius: 8px;
+				cursor: pointer;
+				transition: background-color 0.3s, transform 0.2s;
+			}
+
+			.copy-button:hover {
+				background-color: #e0e0e0;
+				transform: scale(1.05);
+			}
+
+			.copy-button img {
+				width: 20px;
+				height: 20px;
+				transition: transform 0.2s;
+			}
+
+			.copy-button:hover img {
+				transform: scale(1.2); /* Slight zoom effect */
+			}
+
+			/* Notification Styling */
+			#copy-notification {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				background-color: #4caf50;
+				color: white;
+				padding: 10px 20px;
+				border-radius: 5px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				font-size: 14px;
+				font-weight: bold;
+				z-index: 1000;
+				opacity: 0;
+				transition: opacity 0.3s ease-in-out;
+			}
+
+			#copy-notification.hidden {
+				opacity: 0;
+				pointer-events: none;
+			}
+
+			#copy-notification:not(.hidden) {
+				opacity: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Toolbar -->
+		<nav id="toolbar">
+			<ul>
+				<li><a href="./index.html">Home</a></li>
+				<li>
+					<a href="./situation.html">Situation</a>
+				</li>
+				<li><a href="./write-it-yourself.html">Write it Yourself</a></li>
+				<li><a href="./record.html">Record</a></li>
+			</ul>
+		</nav>
+		<main>
+			<h1 class="page-title">Write it Yourself</h1>
+			<p class="page-description">
+				Choose a category and subcategory to view the corresponding example.
+			</p>
+
+			<!-- Dropdown Section -->
+			<section id="dropdown-section">
+				<h2>Select Options</h2>
+				<div id="dropdown-container">
+					<select id="category-dropdown">
+						<option value="" disabled selected>Select a Category</option>
+						<!-- Categories will be dynamically populated -->
+					</select>
+					<select id="subcategory-dropdown" disabled>
+						<option value="" disabled selected>Select a Subcategory</option>
+						<!-- Subcategories will be dynamically populated -->
+					</select>
+				</div>
+				<div id="loading-spinner" class="hidden"></div>
+			</section>
+
+			<!-- Example Section -->
+			<section id="example-section">
+				<h3>Examples:</h3>
+				<ul id="example-list">
+					<!-- Examples will be dynamically inserted here -->
+				</ul>
+			</section>
+		</main>
+
+		<!-- Notification for Copy Success -->
+		<div id="copy-notification" class="hidden">Successfully Copied</div>
+	</body>
+</html>

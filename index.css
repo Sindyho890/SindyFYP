@@ -1,0 +1,855 @@
+/* CSS reset - Don't modify */
+*, *::before, *::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	text-size-adjust: none;
+}
+
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+	display: block;
+	max-width: 100%;
+}
+
+input, button, textarea, select {
+	font: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 650;
+	text-wrap: balance;
+	overflow-wrap: break-word;
+	font-family: "Times New Roman", Times, serif;
+}
+/* End of CSS reset */
+
+/* Applies a custom font and centers the page using a grid layout. */
+html {
+	font-family: "Times New Roman", Times, serif;
+	font-size: clamp(12px, 0.5vw + 9.6px, 16px);
+	width: 100%;
+	height: 100%;
+	display: grid;
+	place-items: center;
+	background-color: #f4f8fb;
+}
+
+body {
+	display: contents;
+	font-family: "Times New Roman", Times, serif;
+	padding-top: 3rem; /* Add padding to account for the fixed toolbar height */
+}
+
+/* Arranges the main content into rows for header and content */
+main {
+	padding: 1rem;
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	gap: 1rem;
+	max-width: 60rem;
+	overflow-y: auto;
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Header styles */
+#header {
+	color: #002a44;
+	line-height: 1;
+	margin-bottom: 1rem;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 40px;
+}
+
+/* Header image styling */
+#header-image {
+	width: 100%;
+	height: auto;
+	margin-bottom: 1rem;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Subtitle styles */
+.page-description {
+	font-size: 20px; /* Reduced font size */
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Controls section with search and filters */
+#controls {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Filters container layout */
+#filters-container {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+#category-filters,
+#subcategory-filters {
+	flex: 1;
+}
+
+/* Search input styles */
+#search-container {
+	width: 100%;
+	margin-bottom: 1rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#search-input {
+	width: 100%;
+	padding: 1rem; /* Increase padding for a larger input box */
+	font-size: 18px; /* Increase font size for better readability */
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 0.5rem;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	font-family: "Times New Roman", Times, serif;
+	transition: box-shadow 0.3s, transform 0.2s;
+}
+
+#search-input:focus {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transform: scale(1.02); /* Slight zoom effect on focus */
+}
+
+/* Search section styles */
+#search-section {
+	display: flex;
+	align-items: center;
+	gap: 1rem; /* Add spacing between the search box and button */
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Category filters (horizontal) */
+#category-filters {
+	margin-bottom: 1rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#category-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	list-style: none;
+	padding: 0.5rem 0;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#category-list li {
+	margin-right: 1rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#category-list label {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#category-list span {
+	margin-left: 0.25rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#category-filters select,
+#subcategory-filters select {
+	width: 100%;
+	padding: 0.5rem;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 0.5rem;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	margin-bottom: 1rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#Category-select,
+#Subcategory-select {
+	width: 100%; /* Ensure both boxes take the same width */
+	padding: 0.5rem; /* Add consistent padding */
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 0.5rem;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	font-family: "Times New Roman", Times, serif;
+	font-size: 16px; /* Ensure consistent font size */
+}
+
+/* Layout for filters and content */
+#filters-and-content {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 1rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Tag filters (vertical) */
+#tag-filters {
+	padding-right: 1rem;
+	border-right: 1px solid rgba(0, 0, 0, 0.1);
+	max-width: 200px;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#tag-list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#tag-list label {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#tag-list span {
+	margin-left: 0.25rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Adjust content container layout */
+#content-container {
+	flex: 3;
+}
+
+/* List controls for sorting and pagination */
+#list-controls {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+select {
+	padding: 0.3rem;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 0.3rem;
+	background-color: white;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Entries list styling */
+#entries-list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.entry-item {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 0.5rem;
+	overflow: hidden;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: box-shadow 0.3s, transform 0.2s;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.entry-item:hover {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transform: scale(1.03); /* Slight zoom effect */
+}
+
+.entry-item details {
+	width: 100%;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.entry-item summary {
+	padding: 0.75rem;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	background-color: #fefefe;
+	position: relative;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.entry-item summary:hover {
+	background-color: #f4f8fb;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.entry-word {
+	margin: 0;
+	flex: 1;
+	color: #002a44;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.entry-category {
+	color: #007acc;
+	margin-right: 1.5rem;
+	font-size: 90%;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.entry-id {
+	color: #666;
+	font-size: 85%;
+	position: absolute;
+	top: 0.5rem;
+	right: 0.75rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.entry-content {
+	padding: 0.75rem;
+	background-color: white;
+	font-family: "Times New Roman", Times, serif;
+	text-align: left; /* Align email content to the left */
+	margin-left: 0; /* Ensure content starts flush with the left margin */
+	line-height: 1.6; /* Improve readability */
+}
+
+.entry-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin-bottom: 0.5rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.entry-pos {
+	padding: 1px 3px;
+	color: #777;
+	border: 1px solid #777;
+	border-radius: 2px;
+	font-size: 90%;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.entry-definition {
+	margin-top: 0.5rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Container for entry content and Go button */
+.entry-content-container {
+	position: relative;
+	padding: 1rem;
+	background-color: white;
+	border-radius: 0.5rem;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Position the Go button at the bottom-right */
+.go-button {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.go-button img {
+	width: 20px;
+	height: 20px;
+	transition: transform 0.2s;
+}
+
+.go-button:hover img {
+	transform: scale(1.2); /* Slight zoom effect on hover */
+}
+
+/* Styles for the "Copy" button */
+.copy-button {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.copy-button img {
+	width: 20px;
+	height: 20px;
+	transition: transform 0.2s;
+}
+
+.copy-button:hover img {
+	transform: scale(1.2); /* Slight zoom effect */
+}
+
+/* Styles for the "Delete" button */
+.delete-button {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.delete-button img {
+	width: 20px;
+	height: 20px;
+	transition: transform 0.2s;
+}
+
+.delete-button:hover img {
+	transform: scale(1.2); /* Slight zoom effect */
+}
+
+/* Example text styles */
+#Example-section h2 {
+	font-size: 30px;
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Random Subcategory text styles */
+#Examples-list li {
+	font-size: 20px;
+	padding: 0.5rem;
+	transition: background-color 0.3s, transform 0.2s;
+	cursor: pointer;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#Examples-list li:hover {
+	background-color: #f0f8ff; /* Light blue background on hover */
+	transform: translateX(5px); /* Slight slide effect */
+}
+
+/* Pagination controls */
+#pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 1rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#pagination button {
+	appearance: none;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 0.5rem 1.5rem;
+	border-radius: 0.5rem;
+	background-color: #f0f8ff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.3s, transform 0.2s;
+	cursor: pointer;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#pagination button:hover:not(:disabled) {
+	background-color: #c1eaff;
+	transform: scale(1.05); /* Slight zoom effect */
+}
+
+button {
+	appearance: none;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 0.5rem 2rem;
+	border-radius: 0.5rem;
+	background-color: #ddf5ff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+	cursor: pointer;
+	font-family: "Times New Roman", Times, serif;
+}
+
+button:hover:not(:disabled) {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	background-color: #c1eaff;
+	transform: scale(1.05); /* Slight zoom effect */
+}
+
+button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#page-info {
+	color: #002a44;
+	font-size: 90%;
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Toolbar styles */
+#toolbar {
+	background-color: #d4eeff;
+	color: rgb(255, 255, 255);
+	padding: 0.5rem 2rem; /* Adjust padding for a shorter toolbar */
+	box-shadow: 0 2px 4px rgba(233, 244, 255, 0.591);
+	position: relative; /* Change position to relative */
+	top: 0;
+	width: 100%; /* Make the toolbar span the full width */
+	z-index: 1000; /* Ensure it stays above other elements */
+	font-family: "Times New Roman", Times, serif;
+	border-bottom: 2px solid #000000; /* Add a bottom line for separation */
+	transition: background-color 0.3s;
+}
+
+#toolbar:hover {
+	background-color: #b0d8ff; /* Slightly darker blue on hover */
+}
+
+#toolbar ul {
+	position: relative; /* Ensure dropdown is positioned relative to the toolbar */
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	gap: 9rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#toolbar li {
+	position: relative; /* Position for dropdown menu */
+	margin: 0;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#toolbar li:hover > ul {
+	display: block; /* Show dropdown menu on hover */
+}
+
+#toolbar ul ul {
+	display: none; /* Hide dropdown menu by default */
+	position: absolute;
+	top: 100%; /* Position dropdown below the parent item */
+	left: 0;
+	background-color: #d4eeff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 0.5rem 0;
+	list-style: none;
+	z-index: 1000;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#toolbar ul ul li {
+	padding: 0.5rem 1rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#toolbar ul ul li a {
+	color: rgb(0, 0, 0);
+	text-decoration: none;
+	font-weight: bold;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 16px;
+	transition: color 0.3s, transform 0.2s;
+}
+
+#toolbar ul ul li a:hover {
+	text-decoration: underline;
+	color: #007acc;
+	transform: scale(1.05);
+}
+
+#toolbar ul ul li a[href="./record.html"] {
+	font-style: italic; /* Optional: Differentiate the Record link visually */
+	font-family: "Times New Roman", Times, serif;
+}
+
+#toolbar li {
+	margin: 0;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#toolbar a {
+	color: rgb(0, 0, 0);
+	text-decoration: none;
+	font-weight: bold;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 20px; /* Increase font size to 15px */
+	transition: color 0.3s, transform 0.2s;
+}
+
+#toolbar a:hover {
+	text-decoration: underline;
+	color: #007acc; /* Change color on hover */
+	transform: scale(1.1); /* Slight zoom effect */
+}
+
+/* Title styles */
+.page-title {
+	font-size: 50px;
+	text-align: center;
+	animation: fadeIn 1s ease-in-out; /* Fade-in effect */
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Style for the situation icon container */
+#situation-icon-container {
+	display: inline-flex;
+	align-items: center;
+	margin-left: 10px; /* Add spacing between the text and the icon */
+}
+
+/* Style for the situation icon */
+#situation-icon {
+	width: 40px; /* Adjust size to match the uploaded image */
+	height: 40px;
+}
+
+/* Add keyframes for fade-in animation */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Typing box styles */
+#typing-box {
+	width: 200px;
+	padding: 8px;
+	margin-left: 5px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 14px;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#typing-box:focus {
+	outline: none;
+	border-color: #007bff;
+	box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Save Email button styles */
+#save-email-button {
+	padding: 0.5rem 1rem;
+	margin-top: 1rem;
+	border: 1px solid #007acc;
+	border-radius: 0.5rem;
+	background-color: #007acc;
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.2s;
+	font-family: "Times New Roman", Times, serif;
+}
+
+#save-email-button:hover {
+	background-color: #005f99;
+	transform: scale(1.05);
+}
+
+/* Styles for saved entry papers */
+.saved-entry-paper {
+	width: 80%;
+	margin: 1rem auto;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background-color: #fff;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	position: relative;
+	font-family: "Times New Roman", Times, serif;
+	text-align: left; /* Ensure all content starts from the left */
+	margin: 0 auto; /* Center the container itself */
+	width: 80%; /* Maintain consistent width */
+}
+
+/* Style for the button wrapper */
+.button-wrapper {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px; /* Add spacing between buttons */
+	margin-top: 10px;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+.email-content {
+	margin-bottom: 1rem;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 16px;
+	line-height: 1.5;
+	white-space: pre-wrap; /* Preserve formatting */
+	text-align: left; /* Align email content to the left */
+	margin-left: 0; /* Ensure content starts flush with the left margin */
+	line-height: 1.6; /* Improve readability */
+	text-align: left; /* Ensure all content starts from the left */
+}
+
+.email-metadata {
+	font-size: 14px;
+	color: #555;
+	font-family: "Times New Roman", Times, serif;
+	text-align: left; /* Align metadata to the left */
+	margin-left: 0; /* Ensure metadata starts flush with the left margin */
+}
+
+/* Styles for recipient and subject fields */
+.email-recipient {
+	font-size: 16px;
+	font-weight: italic;
+	margin-bottom: 0.5rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.email-subject {
+	font-size: 16px;
+	font-style: normal; /* Change font style to normal */
+	margin-bottom: 1rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Styles for delete button */
+.delete-button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.delete-button img {
+	width: 30px;
+	height: 30px;
+	transition: transform 0.2s;
+}
+
+.delete-button:hover img {
+	transform: scale(1.2); /* Slight zoom effect on hover */
+}
+
+/* Styles for the "Go" button */
+.go-button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	margin-left: 1rem;
+	font-family: "Times New Roman", Times, serif;
+}
+
+.go-button img {
+	width: 20px;
+	height: 20px;
+	transition: transform 0.2s;
+}
+
+.go-button:hover img {
+	transform: scale(1.2); /* Slight zoom effect on hover */
+}
+
+/* Styles for the Email Information section */
+#email-info-section {
+	background-color: #f0f8ff; /* Light blue background */
+	border: 1px solid #007acc; /* Blue border */
+	border-radius: 8px; /* Rounded corners */
+	padding: 1rem; /* Add padding inside the section */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+	margin-bottom: 1.5rem; /* Add spacing below the section */
+	font-family: "Times New Roman", Times, serif;
+}
+
+#email-info-section h2 {
+	color: #002a44; /* Dark blue text for the heading */
+	font-size: 1.5rem; /* Slightly larger font size */
+	margin-bottom: 1rem; /* Add spacing below the heading */
+	font-family: "Times New Roman", Times, serif;
+}
+
+#email-info-section label {
+	display: block; /* Ensure labels are on their own line */
+	margin-bottom: 0.5rem; /* Add spacing below labels */
+	font-weight: bold; /* Make labels bold */
+	color: #005f99; /* Medium blue color for labels */
+	font-family: "Times New Roman", Times, serif;
+}
+
+#email-info-section input {
+	width: 100%; /* Full width inputs */
+	padding: 0.75rem; /* Add padding inside inputs */
+	border: 1px solid #ccc; /* Light gray border */
+	border-radius: 4px; /* Rounded corners for inputs */
+	font-size: 1rem; /* Standard font size */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for inputs */
+	transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus effects */
+	font-family: "Times New Roman", Times, serif;
+}
+
+#email-info-section input:focus {
+	border-color: #007acc; /* Blue border on focus */
+	box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Glow effect on focus */
+	outline: none; /* Remove default outline */
+}
+
+#email-info-section h3 {
+	margin-top: 1rem; /* Add spacing above the Selected Example heading */
+	color: #005f99; /* Medium blue color for the heading */
+	font-size: 1.2rem; /* Slightly larger font size */
+	font-family: "Times New Roman", Times, serif;
+}
+
+#email-info-section #selected-example {
+	background-color: #ffffff; /* White background for the example */
+	padding: 0.75rem; /* Add padding inside the example box */
+	border: 1px solid #ccc; /* Light gray border */
+	border-radius: 4px; /* Rounded corners */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+	margin-top: 0.5rem; /* Add spacing above the example box */
+	font-size: 1rem; /* Standard font size */
+	color: #333; /* Dark gray text color */
+	line-height: 1.5; /* Improve readability */
+	font-family: "Times New Roman", Times, serif;
+}
+
+/* Styles for the copy notification */
+#copy-notification {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: #4caf50; /* Green background for success */
+	color: white;
+	padding: 10px 20px;
+	border-radius: 5px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	font-size: 14px;
+	font-weight: bold;
+	z-index: 1000;
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+
+#copy-notification.hidden {
+	opacity: 0;
+	pointer-events: none;
+}
+
+#copy-notification:not(.hidden) {
+	opacity: 1;
+}

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Record</title>
+		<link rel="stylesheet" href="./index.css" />
+		<script src="./record.js" defer></script>
+		<style>
+			/* Main container styling */
+			#record-container {
+				max-width: 1000px;
+				margin: 20px auto;
+				padding: 20px;
+				background-color: #f4f8fb;
+				border-radius: 12px;
+				box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+			}
+
+			/* Page title styling */
+			.page-title {
+				text-align: center;
+				font-size: 36px;
+				color: #002a44;
+				margin-bottom: 20px;
+			}
+
+			/* Redesigned filter section styling */
+			#filter-container {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 20px;
+				padding: 10px;
+				background-color: #ffffff;
+				border-radius: 8px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				border: 1px solid #007acc;
+			}
+
+			#filter-container label {
+				font-weight: bold;
+				font-size: 14px;
+				color: #005f99;
+				margin-right: 10px;
+			}
+
+			#filter-container select {
+				padding: 5px;
+				font-size: 12px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				background-color: #f9f9f9;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+				transition: box-shadow 0.3s, transform 0.2s;
+				width: 150px;
+			}
+
+			#filter-container select:focus {
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+				transform: scale(1.02);
+			}
+
+			/* Saved entries container */
+			#saved-entries-container {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 20px;
+			}
+
+			/* Individual saved entry card */
+			.saved-entry-paper {
+				background-color: #ffffff;
+				border: 1px solid #ddd;
+				border-radius: 10px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				padding: 20px;
+				position: relative;
+				transition: transform 0.2s, box-shadow 0.3s;
+				text-align: left; /* Align all content to the left */
+			}
+
+			.saved-entry-paper:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+			}
+
+			/* Metadata and content styling */
+			.email-metadata {
+				font-size: 14px;
+				color: #555;
+				margin-top: 10px;
+				text-align: left; /* Ensure metadata is aligned to the left */
+			}
+
+			.email-content {
+				margin-bottom: 15px;
+				font-size: 16px;
+				line-height: 1.5;
+				color: #333;
+				text-align: justify; /* Set paragraph alignment to left-justified */
+				margin-left: 0; /* Ensure content starts flush with the left margin */
+			}
+
+			/* Buttons styling */
+			.copy-button {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				background: none;
+				border: none;
+				cursor: pointer;
+				transition: transform 0.2s;
+			}
+
+			.copy-button img {
+				width: 24px;
+				height: 24px;
+			}
+
+			.copy-button:hover img {
+				transform: scale(1.2);
+			}
+
+			.delete-button {
+				position: absolute;
+				bottom: 10px;
+				right: 10px;
+				background: none;
+				border: none;
+				cursor: pointer;
+				transition: transform 0.2s;
+			}
+
+			.delete-button img {
+				width: 24px;
+				height: 24px;
+			}
+
+			.delete-button:hover img {
+				transform: scale(1.2);
+			}
+
+			/* Notification styling */
+			#action-notification {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				background-color: #4caf50;
+				color: white;
+				padding: 10px 20px;
+				border-radius: 5px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				font-size: 14px;
+				font-weight: bold;
+				z-index: 1000;
+				opacity: 0;
+				transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+			}
+
+			#action-notification.hidden {
+				opacity: 0;
+				pointer-events: none;
+			}
+
+			#action-notification:not(.hidden) {
+				opacity: 1;
+			}
+
+			#action-notification.red {
+				background-color: #f44336;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Toolbar -->
+		<nav id="toolbar">
+			<ul>
+				<li><a href="./index.html">Home</a></li>
+				<li><a href="./situation.html">Situation</a></li>
+				<li><a href="./write-it-yourself.html">Write it Yourself</a></li>
+				<li><a href="./record.html">Record</a></li>
+			</ul>
+		</nav>
+		<main>
+			<div id="record-container">
+				<h1 class="page-title">Saved Records</h1>
+				<!-- Redesigned Filter Dropdown -->
+				<div id="filter-container">
+					<label for="date-filter">Sort Records:</label>
+					<select id="date-filter">
+						<option value="new-to-old">Newest First</option>
+						<option value="old-to-new">Oldest First</option>
+					</select>
+				</div>
+				<div id="saved-entries-container">
+					<!-- Saved entries will be dynamically inserted here -->
+				</div>
+			</div>
+		</main>
+
+		<!-- Notification for actions -->
+		<div id="action-notification" class="hidden"></div>
+	</body>
+</html>

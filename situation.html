@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Situation</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<!-- The font used for the app. You can change this to any other font. -->
+		<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap" rel="stylesheet" />
+		<!-- This line loads the CSS file containing the styles -->
+		<link rel="stylesheet" href="./index.css" />
+		<style>
+			body {
+				font-family: "Times New Roman", Times, serif;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Toolbar -->
+		<nav id="toolbar">
+			<ul>
+				<li><a href="./index.html">Home</a></li>
+				<li>
+					<a href="./situation.html">Situation</a>
+				</li>
+				<li><a href="./write-it-yourself.html">Write it Yourself</a></li>
+				<li><a href="./record.html">Record</a></li>
+			</ul>
+		</nav>
+		<main>
+			<!-- Update the title to align the icon vertically with the text -->
+			<h1 id="header">
+				Situation
+				<span id="situation-icon-container">
+					<img src="./situation.png" alt="Situation Icon" id="situation-icon" />
+				</span>
+			</h1>
+			<p class="page-description">
+				Not sure where to start? Just explore the categories and subcategories. <br />
+				You can filter or search to find examples and meanings that make sense for your student life.
+			</p>
+			
+			<!-- Search and Control Filters Section -->
+			<section id="controls">
+				<div id="search-container">
+					<input type="text" id="search-input" placeholder="Search by word or definition..." />
+				</div>
+
+				<div id="filters-container">
+					<!-- Category filters -->
+					<div id="category-filters">
+						<h3>Categories</h3>
+						<select id="Category-select"></select>
+					</div>
+
+					<!-- Subcategory filters -->
+					<div id="subcategory-filters">
+						<h3>Subcategories</h3>
+						<select id="Subcategory-select"></select>
+					</div>
+				</div>
+
+				<div id="filters-and-content">
+					<!-- Tag filters -->
+					<div id="tag-filters">
+						<h3>Parts of Speech</h3>
+						<ul id="tag-list"></ul>
+					</div>
+					
+
+					<div id="content-container">
+						<!-- Sort and entries per page controls -->
+						<div id="list-controls">
+							<div id="sort-control">
+								<label for="sort-select">Sort by:</label>
+								<select id="sort-select">
+									<option value="ID">ID</option>
+									<option value="word">Word</option>
+									<option value="Category">Category</option>
+									<option value="pos">Part of Speech</option>
+									<option value="Subcategory">Subcategory</option>
+								</select>
+							</div>
+							
+							<div id="entries-per-page">
+								<label for="entries-select">Entries per page:</label>
+								<select id="entries-select">
+									<option value="15">15</option>
+									<option value="25" selected>25</option>
+									<option value="35">35</option>
+								</select>
+							</div>
+						</div>
+
+						<!-- Entries list -->
+						<ul id="entries-list"></ul>
+						
+						<!-- Pagination -->
+						<div id="pagination">
+							<button id="prev-page" disabled>‹ Previous</button>
+							<span id="page-info">Page 1 of 1</span>
+							<button id="next-page" disabled>Next ›</button>
+						</div>
+					</div>
+				</div>
+			
+
+			<!-- Filtered results -->
+			<ul id="situation-list">
+				<!-- Filtered results will be dynamically inserted here -->
+			</ul>
+		</main>
+		<!-- Import JavaScript file -->
+		<script src="./situation.js" type="module"></script>
+	</body>
+</html>
